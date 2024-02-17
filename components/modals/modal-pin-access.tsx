@@ -39,7 +39,7 @@ export default function ModalPinAccess() {
               }
               autoTab={true}
               mask={true}
-              size="lg"
+              size="xs"
               onChange={(value, index, values) => setValues(values)}
             />
           </div>

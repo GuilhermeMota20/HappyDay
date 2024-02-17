@@ -45,7 +45,7 @@ export default function CardDashboard({ title }: Props) {
             <li className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <ReceiptText className="h-4 w-4" />
-                <p>Covite</p>
+                <p>Convite</p>
               </div>
 
               <div className="flex items-center justify-center gap-2">
