@@ -15,6 +15,8 @@ export default function PageListGuestFernanda() {
         <HeaderDashboard />
 
         <div className="w-full max-w-[1200px] gap-8 mt-20">
+          <span className="text-xs">Para voltar basta clicar na logo (HappyDay), acima.</span>
+
           <Card>
             <CardHeader>
               <CardTitle>Pessoas que confirmaram presença</CardTitle>
@@ -29,12 +31,11 @@ export default function PageListGuestFernanda() {
                   </div>
                 )}
 
-                <div className="w-full border border-dashed flex flex-col items-center justify-center text-center">
+                <div className="w-full rounded-md p-4 border border-dashed flex flex-col items-start justify-center text-center">
                   {guestsFernanda?.map((item, index) => (
-                    <li key={index} className="grid grid-cols-2 gap-2" >
-                      {item?.username}
-
-                      <span>#{item?.username}</span>
+                    <li key={index} className="w-full grid grid-cols-2 gap-4" >
+                      <span className="text-start">#{index + 1}</span>
+                      <span className="text-start line-clamp-1">{item?.username}</span>
                     </li>
                   ))}
                 </div>
