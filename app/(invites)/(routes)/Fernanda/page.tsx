@@ -20,7 +20,6 @@ export default function PageInviteFernanda() {
           <CardDetails
             coloObs="text-pink-600"
             variantButton="destructive"
-            isChildrenHappyDay={false}
           />
         </section>
       </main>
