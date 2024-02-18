@@ -31,7 +31,7 @@ export default function CardDashboard({ title }: Props) {
 
   return (
     <>
-      <Card className="max-h-72">
+      <Card className="max-h-72 relative">
         <CardHeader className="relative">
           <CardTitle>{title}</CardTitle>
           <CardDescription>{`Central de funcionalidades para ${title}:`}</CardDescription>
@@ -80,7 +80,7 @@ export default function CardDashboard({ title }: Props) {
             </li>
           </ul>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="absolute bottom-0 left-0 w-full border border-top py-2 px-6">
           <span className="text-xs">{`Dashboard de ${title}`}</span>
         </CardFooter>
       </Card>

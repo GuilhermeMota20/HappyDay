@@ -32,7 +32,7 @@ export default function RootPage() {
           </div>
         </div>
 
-        <div className="w-full max-w-[1200px] flex-grow grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="w-full max-w-[1200px] flex-grow grid grid-cols-1 md:grid-cols-2 gap-4">
           <CardDashboard title="Fernanda" />
           <CardDashboard title="Joao" />
         </div>
