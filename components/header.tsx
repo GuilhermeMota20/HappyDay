@@ -18,7 +18,7 @@ export default function Header({ isChildrenHappyDay }: Props) {
         {isChildrenHappyDay && (
           <>
             <Image src="/images/bolofofos-logo.svg" alt="aaa" width={80} height={80} />
-            <audio src="/audio/bolofofos-parabens-pra-voce.mp3" autoPlay loop />
+            <audio src="/audio/bolofofos-parabens-pra-voce.mp3" autoPlay loop controls className="bg-none" />
           </>
         )}
 
