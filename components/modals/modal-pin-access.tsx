@@ -1,7 +1,7 @@
 "use client";
 
 import { useGlobalsVariables } from "@/app/services/hooks/useGlobalsVariables";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PinInput } from 'react-input-pin-code';
 import { Button } from "../ui/button";
 import Modal from "./modal";
@@ -14,9 +14,44 @@ export default function ModalPinAccess() {
   const initialValuePin = ['', '', '', '', '', '']
   const [values, setValues] = useState(initialValuePin);
 
-  const isCurrentUser = currentUser === "Fernanda";
   const convertCurrentValue = values?.join("");
-  const validPinInput = isCurrentUser ? "121320" : "138874";
+
+  let user = {
+    name: "",
+    router: "",
+    validPinInput: "",
+  };
+
+  (() => {
+    if (currentUser === "Fernanda") {
+      return user = {
+        name: "Fernanda",
+        router: "/ListGuestFernanda",
+        validPinInput: "121212"
+      };
+    };
+    if (currentUser === "Agnes") {
+      return user = {
+        name: "Agnes",
+        router: "/ListGuestAgnes",
+        validPinInput: "232323"
+      };
+    };
+    if (currentUser === "Joao") {
+      return user = {
+        name: "Joao",
+        router: "/ListGuestJoao",
+        validPinInput: "343434"
+      };
+    };
+    return {};
+  })();
+
+  useEffect(() => {
+    if (!isOpenModalPinAccess) {
+      setValues(['', '', '', '', '', '']);
+    }
+  }, [isOpenModalPinAccess]);
 
   return (
     <>
@@ -33,22 +68,22 @@ export default function ModalPinAccess() {
             <PinInput
               values={values}
               validate={
-                convertCurrentValue === validPinInput
-                  ? validPinInput
+                convertCurrentValue === user.validPinInput
+                  ? user.validPinInput
                   : "ffffff"
               }
               autoTab={true}
               mask={true}
               size="xs"
-              onChange={(value, index, values) => setValues(values)}
+              onChange={(_value, _index, values) => setValues(values)}
             />
           </div>
 
-          {convertCurrentValue === validPinInput && (
+          {convertCurrentValue === user.validPinInput && (
             <Button onClick={() => {
-              router?.push(`${isCurrentUser ? "/ListGuestFernanda" : "ListGuestJoao"}`)
               onCloseModalPinAccess();
-            }} >
+              router?.push(`${user.router}`);
+            }}>
               Acessar a lista
             </Button>
           )}

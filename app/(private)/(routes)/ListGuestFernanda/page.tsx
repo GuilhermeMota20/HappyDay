@@ -18,7 +18,7 @@ export default function PageListGuestFernanda() {
         <div className="w-full max-w-[1200px] gap-8 mt-20">
           <span className="text-xs">Para voltar basta clicar na logo (HappyDay), acima.</span>
 
-          <Card>
+          <Card className="max-h-[80vh] overflow-auto">
             <CardHeader>
               <CardTitle>Pessoas que confirmaram presença</CardTitle>
               <CardDescription>Aqui você pode acompanhar todas as pessoas que confirmaram estar presente comemorando com você neste dia tão especial:</CardDescription>

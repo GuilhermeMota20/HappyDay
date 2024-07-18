@@ -15,8 +15,8 @@ export const useGuestsFernanda = () => {
 
   useEffect(() => {
     const ref = collection(db, 'guests');
-    const isImportant = where('isListaJoao', '==', false);
-    const GuestsFernandaQuery = query(ref, isImportant);
+    const hasIsListFernanda = where('isListNanda', '==', 'true');
+    const GuestsFernandaQuery = query(ref, hasIsListFernanda);
 
     const fetchGuestsFernanda = onSnapshot(GuestsFernandaQuery, (querySnapshot) => {
       const guestArray: Response[] = [];

@@ -5,8 +5,8 @@ import "../../../globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'HappyDay | Fernanda',
-  description: 'Um dia de comemoracao a mais um ano de vida de um ser extremamente importantes!',
+  title: 'HappyDay | Agnes',
+  description: 'Um dia de comemoração ao primeiro aninho da Agnes',
   icons: {
     icon: [
       {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   }
 };
 
-export default function LayoutFernanda({
+export default function LayoutAgnes({
   children,
 }: Readonly<{
   children: React.ReactNode;

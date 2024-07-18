@@ -1,14 +1,14 @@
 "use client";
 
-import { useGuestsJoao } from "@/app/services/hooks/useGuestsJoao";
+import { useGuestsAgnes } from "@/app/services/hooks/useGuestsAgnes";
 import HeaderDashboard from "@/components/header-dashboard";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import BarLoader from "react-spinners/BarLoader";
 
-export default function PageListGuestFernanda() {
-  const { isLoading, error, guestsFernanda } = useGuestsJoao();
+export default function PageListGuestAgnes() {
+  const { isLoading, error, guestsAgnes } = useGuestsAgnes();
 
   return (
     <>
@@ -34,9 +34,9 @@ export default function PageListGuestFernanda() {
 
                 <div className={cn(
                   "hidden w-full rounded-md p-4 border border-dashed",
-                  guestsFernanda?.length && "flex flex-col items-start justify-center text-center"
+                  guestsAgnes?.length && "flex flex-col items-start justify-center text-center"
                 )}>
-                  {guestsFernanda?.map((item, index) => (
+                  {guestsAgnes?.map((item, index) => (
                     <li key={index} className="w-full grid grid-cols-2 gap-4" >
                       <span className="text-start">#{index + 1}</span>
                       <span className="text-start line-clamp-1">{item?.username}</span>
@@ -44,7 +44,7 @@ export default function PageListGuestFernanda() {
                   ))}
                 </div>
 
-                {guestsFernanda?.length === 0 && error && (
+                {guestsAgnes?.length === 0 && error && (
                   <Link href="/">
                     <div className="w-full h-72 border border-dashed flex flex-col items-center justify-center text-center hover:bg-slate-200/60">
                       <p>Ainda nao houve nenhuma confirmacao, volte mais tarde.</p>
@@ -56,7 +56,7 @@ export default function PageListGuestFernanda() {
             </CardContent>
 
             <CardFooter className="border-t pt-6">
-              <p>Total de pessoas confirmadas: {guestsFernanda?.length}</p>
+              <p>Total de pessoas confirmadas: {guestsAgnes?.length}</p>
             </CardFooter>
           </Card>
         </div>

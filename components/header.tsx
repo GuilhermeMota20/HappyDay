@@ -3,10 +3,11 @@ import { cn } from "@/lib/utils"
 import Image from "next/image";
 
 type Props = {
+  brand: string;
   isChildrenHappyDay: boolean;
 };
 
-export default function Header({ isChildrenHappyDay }: Props) {
+export default function Header({ brand, isChildrenHappyDay = false }: Props) {
   const scrolled = useScrollTop();
 
   return (
@@ -22,14 +23,12 @@ export default function Header({ isChildrenHappyDay }: Props) {
           </>
         )}
 
-        {!isChildrenHappyDay && (
-          <span className={cn(
-            "text-slate-100 uppercase font-bold",
-            scrolled && "text-slate-900"
-          )}>
-            Nanda
-          </span>
-        )}
+        <span className={cn(
+          "text-slate-100 uppercase font-bold",
+          scrolled && "text-slate-900"
+        )}>
+          {brand}
+        </span>
       </header >
     </>
   )

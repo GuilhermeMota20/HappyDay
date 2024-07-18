@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { addDoc, collection } from "firebase/firestore"
 import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 
@@ -34,7 +35,10 @@ const profileFormSchema = z.object({
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
+type VariantType = "link" | "pink" | "yellow" | "default" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined
+
 export default function FormConfirmPresenca() {
+  const [variant, setVariant] = useState<VariantType>("default");
   const { onCloseModal } = useGlobalsVariables();
   const pathName = usePathname();
   const convertPathName = pathName?.replace("/", "");
@@ -44,13 +48,52 @@ export default function FormConfirmPresenca() {
     mode: "onChange",
   });
 
+  useEffect(() => {
+    if (convertPathName === "Agnes") {
+      setVariant("yellow");
+    };
+
+    if (convertPathName === "Joao") {
+      setVariant("default");
+    };
+
+    if (convertPathName === "Fernanda") {
+      setVariant("pink");
+    };
+  }, [convertPathName]);
+
   function onSubmit(data: ProfileFormValues) {
     const ref = collection(db, 'guests');
 
-    addDoc(ref, {
-      username: data?.username,
-      isListaJoao: convertPathName === 'Joao' ? true : false,
-    })
+    let formData = {};
+    if (convertPathName === "Agnes") {
+      formData = {
+        username: data?.username,
+        isListAgnes: true,
+        isListaJoao: false,
+        isListNanda: false,
+      };
+    };
+
+    if (convertPathName === "Joao") {
+      formData = {
+        username: data?.username,
+        isListaJoao: true,
+        isListAgnes: false,
+        isListNanda: false,
+      };
+    };
+
+    if (convertPathName === "Fernanda") {
+      formData = {
+        username: data?.username,
+        isListNanda: true,
+        isListaJoao: false,
+        isListAgnes: false,
+      };
+    };
+
+    addDoc(ref, formData)
       .then(() => {
         toast.success("Presença confirmada com sucesso!");
         onCloseModal();
@@ -79,7 +122,12 @@ export default function FormConfirmPresenca() {
             )}
           />
 
-          <Button type="submit">Confirmar</Button>
+          <Button
+            variant={variant}
+            type="submit"
+          >
+            Confirmar
+          </Button>
         </form>
       </Form>
     </>

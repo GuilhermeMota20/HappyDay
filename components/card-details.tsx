@@ -1,16 +1,17 @@
 "use client";
 
+import { InfosInviteAgnes } from "@/app/types/types";
 import { useGlobalsVariables } from "@/app/services/hooks/useGlobalsVariables";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, FileWarningIcon, Map, TimerIcon } from "lucide-react";
 
 type Props = {
-  coloObs: string;
-  variantButton: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined;
+  infos: InfosInviteAgnes;
+  variantButton: "link" | "pink" | "yellow" | "default" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined;
 };
 
-export default function CardDetails({ coloObs, variantButton }: Props) {
+export default function CardDetails({ infos, variantButton }: Props) {
   const { onOpenModal, onOpenModalViewMap } = useGlobalsVariables();
 
   return (
@@ -18,8 +19,8 @@ export default function CardDetails({ coloObs, variantButton }: Props) {
       <div className="w-full">
         <Card>
           <CardHeader>
-            <CardTitle>Informações adicionais</CardTitle>
-            <CardDescription>Fique atento a essas informações:</CardDescription>
+            <CardTitle>{infos.cardDatils.title}</CardTitle>
+            <CardDescription>{infos.cardDatils.description}</CardDescription>
           </CardHeader>
           <CardContent>
             <ul className="flex flex-col gap-2 items-start justify-start">
@@ -30,7 +31,7 @@ export default function CardDetails({ coloObs, variantButton }: Props) {
                 </div>
 
                 <p className="line-clamp-1">
-                  21/04/2024
+                  {infos.cardDatils.data}
                 </p>
               </li>
 
@@ -41,7 +42,7 @@ export default function CardDetails({ coloObs, variantButton }: Props) {
                 </div>
 
                 <p className="line-clamp-1">
-                  11:00 as 17:00
+                  {infos.cardDatils.horario}
                 </p>
               </li>
 
@@ -55,26 +56,23 @@ export default function CardDetails({ coloObs, variantButton }: Props) {
                   className="text-start cursor-pointer"
                   onClick={onOpenModalViewMap}
                 >
-                  R. Desiderio Ferreira, 770 - Ressaca, Itapecericca da Serra - SP, 06887-220, Brasil
+                  {infos.cardDatils.endereco}
                 </p>
               </li>
 
-              <li className="flex flex-col gap-2 items-start">
-                <div className="flex items-center gap-2">
-                  <FileWarningIcon className="w-4" />
-                  <span className="font-bold">Importante:</span>
-                </div>
+              {infos.cardDatils.informs ? (
+                <li className="flex flex-col gap-2 items-start">
+                  <div className="flex items-center gap-2">
+                    <FileWarningIcon className="w-4" />
+                    <span className="font-bold">Importante:</span>
+                  </div>
 
-                <p>
-                  Caso o convidado queira consumir bebidas alcoólicas, o mesmo ficará por sua responsabilidade de levar.
-                </p>
-
-                <p className={`text-xs ${coloObs}`}>
-                  Terá dois aniversários acontecendo simultaneamente!
-                </p>
-              </li>
+                  <p>{infos.cardDatils.informs}</p>
+                </li>
+              ) : null}
             </ul>
           </CardContent>
+
           <CardFooter>
             <Button
               className="uppercase w-full"

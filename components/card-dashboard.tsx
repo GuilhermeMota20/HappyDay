@@ -1,12 +1,13 @@
 "use client";
 
-import { Check, Copy, CornerDownRight, Link2, ListTodoIcon, Lock, ReceiptText } from "lucide-react";
+import { useGlobalsVariables } from "@/app/services/hooks/useGlobalsVariables";
+import { useOrigin } from "@/app/services/hooks/useOrigin";
+import { Check, Copy, CornerDownRight, ListTodoIcon, Lock, ReceiptText } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
+import { toast } from "sonner";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
-import { useOrigin } from "@/app/services/hooks/useOrigin";
-import Link from "next/link";
-import { useGlobalsVariables } from "@/app/services/hooks/useGlobalsVariables";
 
 type Props = {
   title: string;
@@ -22,6 +23,7 @@ export default function CardDashboard({ title }: Props) {
 
   const onCopy = () => {
     navigator.clipboard.writeText(url);
+    toast.success("URL copiada com sucesso!");
     setCopied(true);
 
     setTimeout(() => {
@@ -31,7 +33,7 @@ export default function CardDashboard({ title }: Props) {
 
   return (
     <>
-      <Card className="max-h-72 relative">
+      <Card className="relative">
         <CardHeader className="relative">
           <CardTitle>{title}</CardTitle>
           <CardDescription>{`Central de funcionalidades para ${title}:`}</CardDescription>
@@ -49,7 +51,7 @@ export default function CardDashboard({ title }: Props) {
               </div>
 
               <div className="flex items-center justify-center gap-2">
-                <Button variant="ghost" onClick={onCopy} className="flex items-center justify-center gap-2">
+                <Button variant="outline" onClick={onCopy} className="flex items-center justify-center gap-2">
                   <span className="text-xs hidden sm:block">Copiar link</span>
 
                   {copied ? (
@@ -60,7 +62,7 @@ export default function CardDashboard({ title }: Props) {
                 </Button>
 
                 <Link href={url} >
-                  <Button variant="ghost" onClick={onCopy} className="flex items-center justify-center gap-2">
+                  <Button variant="outline" className="flex items-center justify-center gap-2">
                     <CornerDownRight className="h-4 w-4" />
                   </Button>
                 </Link>
@@ -73,7 +75,7 @@ export default function CardDashboard({ title }: Props) {
                 <p className="line-clamp-1">Lista de convidados confirmados</p>
               </div>
 
-              <Button variant="ghost" onClick={() => onOpenModalPinAccess(title)} className="flex items-center justify-center gap-2">
+              <Button variant="outline" onClick={() => onOpenModalPinAccess(title)} className="flex items-center justify-center gap-2">
                 <span className="text-xs hidden sm:block">Ir para lista</span>
                 <Lock className="h-4 w-4" />
               </Button>

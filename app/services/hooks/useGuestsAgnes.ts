@@ -8,17 +8,17 @@ type Response = {
   username: string;
 };
 
-export const useGuestsJoao = () => {
-  const [guestsFernanda, setGuestsFernanda] = useState<Response[]>([]);
+export const useGuestsAgnes = () => {
+  const [guestsAgnes, setGuestsAgnes] = useState<Response[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const ref = collection(db, 'guests');
-    const hasIsListJoao = where('isListaJoao', '==', true);
-    const GuestsFernandaQuery = query(ref, hasIsListJoao);
+    const hasIsListAgnes = where('isListAgnes', '==', 'true');
+    const GuestsAgnesQuery = query(ref, hasIsListAgnes);
 
-    const fetchGuestsFernanda = onSnapshot(GuestsFernandaQuery, (querySnapshot) => {
+    const fetchGuestsAgnes = onSnapshot(GuestsAgnesQuery, (querySnapshot) => {
       const guestArray: Response[] = [];
 
       querySnapshot.forEach((doc) => {
@@ -27,15 +27,15 @@ export const useGuestsJoao = () => {
         });
       });
 
-      setGuestsFernanda(guestArray);
+      setGuestsAgnes(guestArray);
       setIsLoading(false);
       setError(null);
     });
 
     return () => {
-      fetchGuestsFernanda();
+      fetchGuestsAgnes();
     };
   }, []);
 
-  return { guestsFernanda, isLoading, error };
+  return { guestsAgnes, isLoading, error };
 };
