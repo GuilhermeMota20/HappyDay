@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`h-full w-full select-none ${inter.className}`}>
+      <body className={`h-full w-full ${inter.className}`}>
         {children}
 
         <Toaster />

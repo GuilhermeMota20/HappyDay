@@ -58,6 +58,10 @@
   }
 }
 
+::selection {
+  @apply bg-pink-300;
+}
+
 /* Firefox */
 * {
   scrollbar-width: thin;
