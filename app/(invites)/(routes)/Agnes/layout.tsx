@@ -25,15 +25,15 @@ export default function LayoutFernanda({
   return (
     <html lang="pt-br" className="overflow-x-hidden">
       <body className={`h-full w-full select-none overflow-x-hidden ${inter.className}`}>
-        {children}
+        <span className="fixed top-[4rem] -right-1 w-1/3 h-16 bg-yellow-400 rotate-2 z-40" />
+        <span className="fixed -top-60 -left-8 w-[110%] h-80 bg-pink-600 rotate-2 z-40" />
 
-        <span className="absolute top-[4rem] -right-1 w-1/3 h-16 bg-yellow-400/90 rotate-2 z-20" />
-        <span className="absolute -top-60 -left-8 w-[110%] h-80 bg-pink-600/75 rotate-2 z-10" />
+        {children}
 
         <div className="fixed hidden md:block -right-12 bottom-0 xl:w-[400px] xl:h-[400px] lg:w-[360px] lg:h-[360px] md:w-[300px] md:h-[300px] brightness-90 bg-[url('/images/agnes_unicornio.png')] bg-no-repeat bg-cover z-30" />
 
-        <span className="fixed bottom-[4rem] -left-1 w-1/3 h-16 bg-yellow-400/90 rotate-2 z-20" />
-        <span className="fixed -bottom-60 -left-8 w-[110%] h-80 bg-pink-600/75 rotate-2 z-10" />
+        <span className="fixed bottom-[4rem] -left-1 w-1/3 h-16 bg-yellow-400 rotate-2 z-20" />
+        <span className="fixed -bottom-60 -left-8 w-[110%] h-80 bg-pink-600 rotate-2 z-10" />
       </body>
     </html>
   );

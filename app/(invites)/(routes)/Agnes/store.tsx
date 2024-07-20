@@ -10,7 +10,7 @@ export const infosInviteAgnes = {
     title: "Informações importantes",
     description: "Fique atento a essas informações:",
     data: "18/08/2024",
-    horario: "as 14h30min",
+    horario: "as 15h",
     endereco: "R. Duartina, 45 - Jardim Dom Jose, Embu das Artes - SP, 06823-420",
     informs: "",
   }
