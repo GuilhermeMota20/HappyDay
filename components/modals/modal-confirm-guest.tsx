@@ -12,7 +12,7 @@ export default function ModalConfirmGuest() {
       {isOpenModal && (
         <Modal
           title="Falta pouco!"
-          description="Preencha os campos abaixo para confirmar sua presença neste dia tão esperado."
+          description="Preencha os campos abaixo para confirmar sua presença neste dia tão esperado. Por favor, confirmar sua presença apenas se puder comparecer, agradecemos sua consideração"
           onClose={onCloseModal}
         >
           <FormConfirmPresenca />
