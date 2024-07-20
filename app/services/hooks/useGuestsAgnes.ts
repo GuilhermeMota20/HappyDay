@@ -15,7 +15,7 @@ export const useGuestsAgnes = () => {
 
   useEffect(() => {
     const ref = collection(db, 'guests');
-    const hasIsListAgnes = where('isListAgnes', '==', 'true');
+    const hasIsListAgnes = where('isListAgnes', '==', true);
     const GuestsAgnesQuery = query(ref, hasIsListAgnes);
 
     const fetchGuestsAgnes = onSnapshot(GuestsAgnesQuery, (querySnapshot) => {
